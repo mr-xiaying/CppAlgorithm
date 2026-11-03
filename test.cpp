@@ -1,3 +1,4 @@
+//判断和是不是质数的排列组合问题
 #include <iostream>
 using namespace std;
 int n,r;
