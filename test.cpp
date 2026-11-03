@@ -1,4 +1,4 @@
-//判断和是不是质数的排列组合问题,类似于组合
+//判断和是不是质数的排列组合问题,类似于组合。
 #include <iostream>
 using namespace std;
 int n,r;
