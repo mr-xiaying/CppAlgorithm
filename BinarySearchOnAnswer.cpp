@@ -93,3 +93,60 @@ long long 主要用于大范围整数计算，尤其是求和和乘法。
 vector.resize(n) 会真正改变元素数量，可以让你访问 a[0] 到 a[n-1]。
 */
 
+//P2440 二分答案的第二个实际应用
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+int n,k;
+vector<int> a(n);
+
+int maxh(vector<int>&a){
+    int m=a[0];
+    for(int i=1;i<n;++i){
+      if(a[i]>m){
+          m=a[i];
+      }
+    }
+    return m;
+}
+
+bool check(int l){
+    long long sum=0;
+    for(int i=0;i< n;++i){
+        sum+=a[i]/l;
+    }
+    
+    if(sum>=k){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+int main(){
+    cin>>n>>k;
+    a.resize(n);
+    for(int &x:a){
+      cin>>x;
+    }
+    int left =1;
+    int right =maxh(a);
+    while(left<= right){
+    int mid=left+(right-left)/2;
+       if(check(mid)){
+           left=mid+1;
+       }
+       else{
+           right= mid-1;
+       }
+    }
+    if(right>0){
+        cout<<right<<endl;
+    }
+    else{
+        cout<<0<<endl;
+    }
+    return 0;
+}
